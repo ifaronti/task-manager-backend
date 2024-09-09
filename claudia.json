@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "TaskManager-executor",
+    "name": "TaskManager",
+    "region": "eu-west-1"
+  },
+  "api": {
+    "id": "hmkvqc8ti1"
+  }
+}
