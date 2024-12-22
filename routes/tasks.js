@@ -1,8 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const {getTasks, addBoard, getBoards, deleteTask, deleteBoard, updateStatus,
-     addTask, patchTask, patchBoard, putBoard, patchSub
-    } = require('../controllers/tasks')
+const {getTasks, deleteTask, updateStatus,
+     addTask, patchTask
+} = require('../controllers/tasks')
+    
+const { addBoard, getBoards,
+    deleteBoard, putBoard, patchBoard } = require('../controllers/boards.js')
+
+const {patchSub} = require('../controllers/subtasks.js')
 
 router.route('/tasks').get(getTasks).put(putBoard)
 router.route('/tasks/:id/boards/name').get(getBoards)
