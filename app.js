@@ -15,10 +15,10 @@ app.set('trust proxy', 1)
 app.use(cors({
       allowedHeaders: ["authorization", "Content-Type", "Access-Control-Allow-Origin"],
       exposedHeaders: ["authorization", "Access-Control-Allow-Origin"],
-      origin: "https://ifastaskmanager.netlify.app",
+      origin: "*",
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       preflightContinue: true,
-      credentials:true,
+    //   credentials:true,
       maxAge:600
     }))
 app.use(rateLimit({
@@ -38,15 +38,15 @@ app.use('/api', authRoutes)
 app.use('/api', verifyIt, tasksRoute)
 
 //server fireUp syncing with database connection
-// const port = process.env.PORT || 4000
+const port = process.env.PORT || 4000
 const connectDB = require('./database/connectDB')
 
 const start = async()=>{
     try{
         await connectDB(process.env.connectString)
-        // app.listen(port, ()=>{
-        //     console.log(`Server is fired up on port ${port}`)
-        // })
+        app.listen(port, ()=>{
+            console.log(`Server is fired up on port ${port}`)
+        })
     }
     catch (err){
     }
